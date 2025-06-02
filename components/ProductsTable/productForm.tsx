@@ -10,6 +10,7 @@ import ProductSchema from '@/schemas/productSchema';
 import { useProductStore } from '@/store/ProductStore';
 import { ProductDTO } from '@/data/dtos/products';
 import Image from 'next/image';
+import { toast } from 'react-toastify';
 
 interface ProductFormProps {
   product: ProductDTO | null;
@@ -17,7 +18,7 @@ interface ProductFormProps {
   onClose: () => void;
 }
 
-const ProductForm = ({ product, isOpen, onClose }: ProductFormProps) => {
+const ProductForm = ({ product, onClose }: ProductFormProps) => {
   const token = useAuthStore((state) => state.token);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -30,7 +31,7 @@ const ProductForm = ({ product, isOpen, onClose }: ProductFormProps) => {
     setDescription(product?.description || '');
     setThumbnailURL(product?.thumbnail || '');
     setPreview(product?.thumbnail || '');
-    setThumbnailFile(null); // reset file on product change
+    setThumbnailFile(null);
   }, [product]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +39,7 @@ const ProductForm = ({ product, isOpen, onClose }: ProductFormProps) => {
       const file = e.target.files[0];
       setThumbnailFile(file);
       setPreview(URL.createObjectURL(file));
-      setThumbnailURL(''); // clear URL if file selected
+      setThumbnailURL('');
     }
   };
 
@@ -59,12 +60,23 @@ const ProductForm = ({ product, isOpen, onClose }: ProductFormProps) => {
       }
 
       if (product?.id) {
-        await updateProduct(product.id, title, description);
+        const response = await updateProduct(product.id, title, description);
+
+        if (response.data.message) {
+          toast.success(response.data.message);
+        }
+
         if (thumbnailFile) {
           await updateThumbnail(product.id, thumbnailFile);
         }
+
       } else {
-        const response = await createProduct(title, description, thumbnailURL);
+        const response = await createProduct(title, description, thumbnailURL || thumbnailFile || '');
+
+        if (response.message) {
+          toast.success(response.message);
+        }
+
         const newProduct = {
           id: response.id,
           title,
@@ -76,8 +88,12 @@ const ProductForm = ({ product, isOpen, onClose }: ProductFormProps) => {
       }
 
       onClose();
-    } catch (e) {
-      console.error('Failed to update', e);
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        toast.error('Failed to update: ' + e.message);
+      } else {
+        toast.error('Failed to update: Unknown error');
+      }
     }
   };
 
@@ -87,10 +103,10 @@ const ProductForm = ({ product, isOpen, onClose }: ProductFormProps) => {
         <div className="fixed inset-0 bg-black/40 transition-opacity" aria-hidden="true" />
         <div className="fixed inset-0 flex items-center justify-center p-4 overflow-y-auto">
           <Dialog.Panel className=" bg-white dark:bg-zinc-900 rounded-xl shadow-2xl
-  w-full max-w-md p-6 space-y-4
-  transform transition-all scale-100
-  sm:max-w-lg
-  md:max-w-xl">
+                        w-full max-w-md p-6 space-y-4
+                            transform transition-all scale-100
+                                  sm:max-w-lg
+                                d:max-w-xl">
             <Dialog.Title className="text-xl font-semibold text-gray-800 dark:text-gray-100">
               {product?.id ? 'Update Product' : 'New Product'}
             </Dialog.Title>

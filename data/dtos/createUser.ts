@@ -1,5 +1,3 @@
-// src/data/dtos/UserDTO.ts
-
 export interface PhoneDTO {
   country: string;
   ddd: string;
