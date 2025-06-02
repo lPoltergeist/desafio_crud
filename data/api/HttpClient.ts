@@ -6,16 +6,6 @@ export const login = (email: string, password: string) => api.post("/auth/login"
 
 export const createUser = (data: SignupRequestDTO) => api.post("/users", data);
 
-const fileToBase64 = (file: File): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = reject;
-  });
-};
-
-
 export const getProducts = (token: string, page: number, pageSize: number) => {
   return api.get("/products",
     {

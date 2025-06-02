@@ -66,6 +66,14 @@ const ProductForm = ({ product, onClose }: ProductFormProps) => {
           toast.success(response.data.message);
         }
 
+        const updatedProduct = {
+          id: product.id,
+          title,
+          description,
+          status: true,
+        };
+        useProductStore.getState().updateProduct(updatedProduct);
+
         if (thumbnailFile) {
           await updateThumbnail(product.id, thumbnailFile);
         }
@@ -76,7 +84,7 @@ const ProductForm = ({ product, onClose }: ProductFormProps) => {
         if (response.message) {
           toast.success(response.message);
         }
-
+        
         const newProduct = {
           id: response.id,
           title,

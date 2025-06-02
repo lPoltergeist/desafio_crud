@@ -34,13 +34,11 @@ export default function Home() {
         router.push('/products');
       }
 
-    } catch (error: any) {
-      if (error.response && error.response.data) {
-        const backendMessage = error.response.data.message;
-        toast.error(backendMessage);
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        toast.error('Failed to login: ' + e.message);
       } else {
-        console.log('Erro inesperado:', error.message);
-        toast.error(error.message);
+        toast.error('Failed to login: Unknown error');
       }
     }
   };

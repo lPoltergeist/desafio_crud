@@ -3,17 +3,27 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Button } from "@heroui/button";
 import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/solid'
+import { useAuthStore } from "@/store/authStore";
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
+  const setToken = useAuthStore((state) => state.setToken);
+
   
   useEffect(() => {
     setMounted(true);
   }, []);
 
   if (!mounted) return null;
+
+ const handleLogout = () => {
+  localStorage.removeItem('auth-storage');
+  setToken('');
+  window.location.reload();
+};
+
 
   return (
     <nav className="w-full bg-white dark:bg-zinc-900 shadow-md p-4 flex items-center justify-between">
@@ -54,6 +64,7 @@ export default function Navbar() {
         >
           {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
         </Button>
+        <Button className="ml-2" onPress={handleLogout}>Logout</Button>
       </div>
     </nav>
   );

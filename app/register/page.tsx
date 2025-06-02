@@ -50,18 +50,16 @@ export default function Register() {
           autoClose: 1500,
         });
         router.push('/products');
-        
-        
+
+
       } else {
-        console.log("Senhas não conferem")
+        toast.error("Passwords do not match");
       }
-    } catch (error: any) {
-      if (error.response && error.response.data) {
-        const backendMessage = error.response.data.message;
-        toast.error(backendMessage);
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        toast.error('Failed to create user: ' + e.message);
       } else {
-        console.log('Erro inesperado:', error.message);
-        toast.error(error.message);
+        toast.error('Failed to create user: Unknown error');
       }
     }
   }

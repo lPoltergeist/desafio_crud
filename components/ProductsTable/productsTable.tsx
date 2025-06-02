@@ -26,18 +26,16 @@ function ProductsTable() {
     useEffect(() => {
         if (!token) return;
 
-        try{
+        try {
             getProducts(token, paginationModel.page + 1, paginationModel.pageSize).then((res) => {
-            setProducts(res.data.data, res?.data.meta.total);
-        });
-        } catch (error: any) {
-            if (error.response && error.response.data) {
-                    const backendMessage = error.response.data.message;
-                    toast.error(backendMessage);
-                  } else {
-                    console.log('Erro inesperado:', error.message);
-                    toast.error(error.message);
-                  }
+                setProducts(res.data.data, res?.data.meta.total);
+            });
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                toast.error('Failed to get products: ' + e.message);
+            } else {
+                toast.error('Failed to get products: Unknown error');
+            }
         }
 
     }, [token, setProducts, paginationModel]);
@@ -47,8 +45,13 @@ function ProductsTable() {
             try {
                 deleteProduct(id);
                 removeProduct(id);
-            } catch (e) {
-                console.error('Failed to delete', e);
+                toast.success('Product deleted successfully');
+            } catch (e: unknown) {
+                if (e instanceof Error) {
+                    toast.error('Failed to delete: ' + e.message);
+                } else {
+                    toast.error('Failed to delte: Unknown error');
+                }
             }
         }
     };
