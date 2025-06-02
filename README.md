@@ -6,21 +6,22 @@ A proposta consistia em implementar uma aplicação Next.js com funcionalidades 
 
 ---
 
-## Acesse o projeto online no vercel
+## Acessar projeto
 
-desafio-crud.vercel.app
+[Acesse o projeto online](https://desafio-crud.vercel.app)
 
 ## 🚀 Tecnologias utilizadas
 
-- **Next.js 14** (App Router)
-- **React 18**
-- **Tailwind CSS**
-- **TypeScript**
-- **Zustand** (estado global)
-- **Zod** (validação de formulários)
-- **Chart.js** (gráfico de métricas)
-- **Headless UI** (Hero UI / Dialog)
-- **Vercel** (deploy)
+- [Next.js](https://nextjs.org/) (App Router)
+- [React 18+](https://reactjs.org/)
+- [next-themes](https://github.com/pacocoursey/next-themes) - suporte a tema dark/light e system
+- [Framer Motion](https://www.framer.com/motion/) - animações declarativas
+- [TypeScript](https://www.typescriptlang.org) 
+- [Tailwind](https://tailwindcss.com) 
+- [Zod](https://zod.dev)
+- [Zustand](https://zustand-demo.pmnd.rs)
+- [HeroUI](https://www.heroui.com)
+- [Vercel](https://vercel.com)
 
 ---
 
