@@ -22,6 +22,7 @@ A proposta consistia em implementar uma aplicação Next.js com funcionalidades 
 - [Zustand](https://zustand-demo.pmnd.rs)
 - [HeroUI](https://www.heroui.com)
 - [Vercel](https://vercel.com)
+- [React-Toastify](https://fkhadra.github.io/react-toastify/introduction/)
 
 ---
 
