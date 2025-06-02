@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import { Button } from "@heroui/button";
 import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/solid'
 import { useAuthStore } from "@/store/authStore";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const setToken = useAuthStore((state) => state.setToken);
+  const router = useRouter();
 
   
   useEffect(() => {
@@ -21,7 +23,8 @@ export default function Navbar() {
  const handleLogout = () => {
   localStorage.removeItem('auth-storage');
   setToken('');
-  window.location.reload();
+  router.push('/');
+  
 };
 
 
