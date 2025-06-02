@@ -45,9 +45,13 @@ export default function Register() {
     try {
       if (password === verifyPassword) {
         const response = await createUser(userData);
-        setToken(response.data.token)
-
-        console.log(response.data)
+        setToken(response.data.token);
+        toast.success("Success on register!", {
+          autoClose: 1500,
+        });
+        router.push('/products');
+        
+        
       } else {
         console.log("Senhas não conferem")
       }
