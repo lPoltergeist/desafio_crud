@@ -37,11 +37,15 @@ Projeto base Next.js 13/14 com suporte robusto a tema dinâmico (dark/light), fo
    cd seu-projeto
 
 2. instale as dependências:
+ ```bash
     npm install 
     # ou
     yarn add
+```
 
 3. inicie o projeto:
+```bash
     npm run dev 
     # ou
-    yarn run dev
+    yarn dev
+```
