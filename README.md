@@ -1,47 +1,62 @@
-# Next.js App Router Starter Project
+# Desafio Técnico – Vaga Front-End
 
-Projeto base Next.js 13/14 com suporte robusto a tema dinâmico (dark/light), fontes customizadas, e animações fluídas usando Framer Motion — pra você codar rezando e rodando como um templar da web.
+Este projeto foi desenvolvido como parte de um processo seletivo para a vaga de desenvolvedor front-end.
 
----
-
-## Tecnologias e libs usadas
-
-- **[Next.js](https://nextjs.org/)** (App Router)  
-- **[React 18+](https://reactjs.org/)**  
-- **[next-themes](https://github.com/pacocoursey/next-themes)** — tema dark/light + modo sistema  
-- **[Framer Motion](https://www.framer.com/motion/)** — animações declarativas e suaves  
-- **[TypeScript](https://www.typescriptlang.org)** — código forte que não deixa passar erro  
-- **[Tailwind CSS](https://tailwindcss.com)** — utilitários para estilização rápida e responsiva  
-- **[Zod](https://zod.dev)** — validação de schemas na moral  
-- **[Zustand](https://zustand-demo.pmnd.rs)** — estado global simples e poderoso  
-- **[HeroUI](https://www.heroui.com)** — componentes prontos com design moderno 
-- **[React-Toastify](https://fkhadra.github.io/react-toastify/introduction/)** — facilita gerenciamento de notificações
+A proposta consistia em implementar uma aplicação Next.js com funcionalidades de CRUD de produtos e visualização de métricas, utilizando tecnologias modernas e boas práticas de desenvolvimento.
 
 ---
 
-## Estrutura do projeto
+## Acessar projeto
 
-- `/app` — rotas e layouts pelo novo App Router do Next.js  
-- `/app/layout.tsx` — layout raiz, configura tema, fontes e setup global  
-- `/app/page.tsx` — página inicial  
-- `/components` — componentes React reutilizáveis, para evitar duplicar código e trabalho  
-- `/styles` — estilos globais e específicos, na medida certa  
+[Acesse o projeto online](https://desafio-crud.vercel.app)
+
+## 🚀 Tecnologias utilizadas
+
+- [Next.js](https://nextjs.org/) (App Router)
+- [React 18+](https://reactjs.org/)
+- [next-themes](https://github.com/pacocoursey/next-themes) - suporte a tema dark/light e system
+- [Framer Motion](https://www.framer.com/motion/) - animações declarativas
+- [TypeScript](https://www.typescriptlang.org) 
+- [Tailwind](https://tailwindcss.com) 
+- [Zod](https://zod.dev)
+- [Zustand](https://zustand-demo.pmnd.rs)
+- [HeroUI](https://www.heroui.com)
+- [Vercel](https://vercel.com)
 
 ---
 
-## Como rodar
+## ✅ Funcionalidades
 
-1. Clone o projeto:  
-   ```bash
-   git clone https://github.com/seu-usuario/seu-projeto.git
-   cd seu-projeto
+- ✅ Autenticação com token (via API)
+- ✅ CRUD completo de produtos (criar, editar, excluir, listar)
+- ✅ Upload de imagem por **URL ou arquivo**
+- ✅ Validação dos campos com **Zod**
+- ✅ Exibição de gráfico de métricas (dados mockados)
+- ✅ Interface responsiva com **modo escuro**
+- ✅ Modal acessível com **Headless UI**
 
-2. instale as dependências:
-    npm install 
-    # ou
-    yarn add
+---
 
-3. inicie o projeto:
-    npm run dev 
-    # ou
-    yarn run dev
+## 🧠 Diferenciais implementados
+
+- 🧩 **Preview de imagem** ao selecionar ou colar URL
+- ⚙️ **Separação de responsabilidades** clara (`store`, `schemas`, `api`, `dtos`, `components`)
+- 💬 UX intuitiva com feedbacks claros (erros de validação, preview, loaders)
+- 🌒 Dark Mode funcional via `next-themes`
+
+---
+
+## 📦 Como rodar o projeto
+
+```bash
+# Clone o repositório
+git clone https://github.com/lPoltergeist/desafio_crud.git
+cd desafio_crud
+
+# Instale as dependências
+npm install
+
+# Rode o ambiente de desenvolvimento
+npm run dev
+
+# Acesse: http://localhost:3000
