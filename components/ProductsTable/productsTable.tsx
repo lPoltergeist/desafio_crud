@@ -64,12 +64,11 @@ function ProductsTable() {
     const columns: GridColDef<ProductDTO>[] = [
         { field: 'title', headerName: 'Title', flex: 1, width: 150 },
         { field: 'description', headerName: 'Description', flex: 2, width: 150 },
-        { field: 'status', headerName: 'Status', flex: 3, width: 50 },
         {
             field: 'actions',
             type: 'actions',
             headerName: 'Actions',
-            width: 150,
+            width: 50,
             getActions: (params) => [
                 <GridActionsCellItem
                     key={params.id}
