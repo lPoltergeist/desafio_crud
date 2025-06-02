@@ -33,8 +33,8 @@ Projeto base Next.js 13/14 com suporte robusto a tema dinâmico (dark/light), fo
 
 1. Clone o projeto:  
    ```bash
-   git clone https://github.com/seu-usuario/seu-projeto.git
-   cd seu-projeto
+   https://github.com/lPoltergeist/desafio_crud.git
+   cd desafio_crud
 
 2. instale as dependências:
     ```bash
