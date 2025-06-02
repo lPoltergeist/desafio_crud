@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@heroui/button";
 import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/solid'
 import { useAuthStore } from "@/store/authStore";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
