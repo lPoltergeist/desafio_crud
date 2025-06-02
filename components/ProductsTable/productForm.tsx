@@ -59,12 +59,12 @@ const ProductForm = ({ product, isOpen, onClose }: ProductFormProps) => {
       }
 
       if (product?.id) {
-        await updateProduct(product.id, title, description, token);
+        await updateProduct(product.id, title, description);
         if (thumbnailFile) {
-          await updateThumbnail(product.id, thumbnailFile, token);
+          await updateThumbnail(product.id, thumbnailFile);
         }
       } else {
-        const response = await createProduct(title, description, thumbnailURL, token);
+        const response = await createProduct(title, description, thumbnailURL);
         const newProduct = {
           id: response.id,
           title,

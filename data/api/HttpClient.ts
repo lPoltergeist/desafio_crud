@@ -14,10 +14,9 @@ export const getProducts = (token: string, page: number, pageSize: number) => {
         });
 }
 
-export const createProduct = async (title: string, description: string, thumbnail: string, token: string) => {
+export const createProduct = async (title: string, description: string, thumbnail: string) => {
   const response = await api.post("/products", { title, description, thumbnail }, {
     headers: {
-      Authorization: `Bearer ${token}`,
       'Content-Type': 'multipart/form-data',
     },
   });
@@ -26,33 +25,20 @@ export const createProduct = async (title: string, description: string, thumbnai
 };
 
 
-export const deleteProduct = (id: GridRowId, token: string) => {
-    api.delete(`/products/${id}`,
-        {
-            headers:
-            {
-                Authorization: `Bearer ${token}`
-            }
-        })
+export const deleteProduct = (id: GridRowId) => {
+    api.delete(`/products/${id}`)
 }
 
-export const updateProduct = (id: GridRowId, title: string, description: string, token: string) => api.put(`/products/${id}`, { title, description },
-    {
-        headers:
-        {
-            Authorization: `Bearer ${token}`
-        }
-    }
+export const updateProduct = (id: GridRowId, title: string, description: string) => api.put(`/products/${id}`, 
+  { title, description }
 );
 
-export const updateThumbnail = (id: GridRowId, thumbnail: string | File, token: string) => {
-  console.log('token:', token, 'id', id, 'thumbnail', thumbnail);
+export const updateThumbnail = (id: GridRowId, thumbnail: string | File) => {
   return api.patch(
     `/products/thumbnail/${id}`,
     { thumbnail },
     {
       headers: {
-        Authorization: `Bearer ${token}`,
         'Content-Type': 'multipart/form-data',
       }
     }

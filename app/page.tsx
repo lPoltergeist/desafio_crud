@@ -76,9 +76,9 @@ export default function Home() {
           required
           autoComplete="current-password"
         />
-        <div className="flex gap-4 justify-center">
-          <Button  type="submit" className="w-[100px]">Login</Button>
-          <Button variant="ghost" type="button" className="w-[100px]" onClick={goToRegister}>Register</Button>
+        <div className="flex gap-4 justify-center flex flex-col sm:flex-row pt-4">
+          <Button type="submit" className="w-full sm:w-[100px]">Login</Button>
+          <Button variant="ghost" type="button" className="w-full sm:w-[100px]" onPress={goToRegister}>Register</Button>
         </div>
       </form>
     </div>

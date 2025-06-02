@@ -45,7 +45,7 @@ function ProductsTable() {
     const handleDelete = async (id: GridRowId) => {
         if (token !== null) {
             try {
-                deleteProduct(id, token);
+                deleteProduct(id);
                 removeProduct(id);
             } catch (e) {
                 console.error('Failed to delete', e);

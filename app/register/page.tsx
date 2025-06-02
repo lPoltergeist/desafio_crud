@@ -21,7 +21,7 @@ export default function Register() {
   const [number, setNumber] = useState("");
   const setToken = useAuthStore((state) => state.setToken);
 
-  const handleCreateUse = async () => {
+  const handleCreateUser = async () => {
 
     const userData = {
       name: name,
@@ -67,21 +67,29 @@ export default function Register() {
   }
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Input placeholder="name" type="name" value={name} onChange={(e) => setName(e.target.value)} />
-        <Input placeholder="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <Input placeholder="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <Input placeholder="verify password" type="password" value={verifyPassword} onChange={(e) => setVerifyPassword(e.target.value)} />
-        <Input placeholder="country" type="string" value={country} onChange={(e) => setCountry(e.target.value)} />
-        <Input placeholder="DDD" type="string" value={ddd} onChange={(e) => setDDD(e.target.value)} />
-        <Input placeholder="number" type="string" value={number} onChange={(e) => setNumber(e.target.value)} />
+    <div className="min-h-screen flex flex-col justify-center items-center p-8 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleCreateUser();
+        }}
+        className="flex flex-col gap-6 w-full max-w-md"
+      >
 
-        <div className="flex gap-4 center" >
-          <Button className="cursor-pointer w-[100px]" onClick={handleCreateUse}>Register</Button>
-          <Button className="cursor-pointer w-[100px]" onClick={goToLogin}>Back</Button>
+        <Input placeholder="name" type="name" value={name} onChange={(e) => setName(e.target.value)} required />
+        <Input placeholder="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <Input placeholder="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <Input placeholder="verify password" type="password" value={verifyPassword} onChange={(e) => setVerifyPassword(e.target.value)} required />
+        <Input placeholder="country" type="string" value={country} onChange={(e) => setCountry(e.target.value)} required />
+        <Input placeholder="DDD" type="string" value={ddd} onChange={(e) => setDDD(e.target.value)} required />
+        <Input placeholder="number" type="string" value={number} onChange={(e) => setNumber(e.target.value)} required />
+
+        <div className="flex gap-4 justify-center flex flex-col sm:flex-row pt-4" >
+          <Button type="submit" className="w-full sm:w-[100px]" >Register</Button>
+          <Button variant="ghost" className="w-full sm:w-[100px]" onPress={goToLogin}>Back</Button>
         </div>
-      </main>
+
+      </form>
     </div>
   );
 }
